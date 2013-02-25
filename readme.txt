@@ -5,7 +5,7 @@ Author URI: http://upthemes.com/
 Plugin URI: http://upthemes.com/plugins/kint-debugger
 Tags: debug, debugger, print_r, var_dump, backtrace, debug_backtrace, krumo, php, tool, trace, developer, debug-bar
 Requires at least: 2.5
-Tested up to: 3.5
+Tested up to: 3.5.1
 Stable tag: 0.3
 
 Kint Debugger makes debugging and dumping variables a more pleasant experience. Kint Debugger integrates seamlessly with the Debug Bar plugin.
@@ -23,6 +23,7 @@ Dumping variables is easy:
 
 * `d($variable)` will output a styled, collapsible container with your variable information
 * `dd($variable)` will do exactly as d() except halt execution of the script
+* `dp($variable)` will do exactly as d() but will bypass WP Debug Bar if installed
 * `s($variable)` will output a simple, un-styled whitespace container
 * `sd($variable)` will do exactly as s() except halt execution of the script
 

@@ -53,4 +53,11 @@ $_kintSettings['charset'] = null;
 /** @var bool only set to true if you want to develop kint and know what you're doing */
 $_kintSettings['devel'] = false;
 
+
 unset($_kintSettings);
+
+
+/** @param book whether or not to print result to the debug bar, if active  */
+global $kint_use_debug_bar;
+$kint_use_debug_bar = true;
+

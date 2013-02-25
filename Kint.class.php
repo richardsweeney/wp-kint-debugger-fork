@@ -12,6 +12,9 @@ License: MIT
 define( 'KINT_DIR', dirname( __FILE__ ) . '/' );
 require KINT_DIR . 'config.default.php';
 
+global $use_debug_bar;
+$use_debug_bar = true;
+
 if ( is_readable( KINT_DIR . 'config.php' ) ) {
     require KINT_DIR . 'config.php';
 }
@@ -233,6 +236,7 @@ class Kint
         while ( $callee = array_pop( $trace ) ) {
             if ( strtolower( $callee['function'] ) === 'd' ||
                  strtolower( $callee['function'] ) === 'dd' ||
+                 strtolower( $callee['function'] ) === 'dp' ||
                  isset( $callee['class'] ) && strtolower( $callee['class'] ) === strtolower( __CLASS__ )
             ) {
                 break;
@@ -630,8 +634,6 @@ class Kint
                         ? $color
                         : '#fff';
             }
-
-            $style = " style=\"box-shadow: 6px 0 3px -3px {$color} inset\"";
         } else {
             $style = '';
         }
@@ -829,6 +831,16 @@ if ( !function_exists( 'd' ) ) {
         $args = func_get_args();
         call_user_func_array( array( 'Kint', 'dump' ), $args );
         die;
+    }
+    function dp()
+    {
+        if ( !Kint::enabled() ) return null;
+
+        global $kint_use_debug_bar;
+        $kint_use_debug_bar = false;
+
+        $args = func_get_args();
+        return call_user_func_array( array( 'Kint', 'dump' ), $args );
     }
 }
 
@@ -1074,10 +1086,12 @@ if ( !function_exists( 'dump_post' ) ) {
 }
 
 function kint_debug_globals($buffer){
-    global $kint_debug;
+    global $kint_debug, $kint_use_debug_bar;
     $kint_debug[] = $buffer;
-    if(class_exists('Debug_Bar')) return;
-    return $buffer;
+    if($kint_use_debug_bar  && class_exists('Debug_Bar'))
+        return;
+    else
+        return $buffer;
 }
 
 class kintDebugBarPanel {

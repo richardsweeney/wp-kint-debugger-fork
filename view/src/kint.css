@@ -1,6 +1,5 @@
 .kint-trace {
 	background: #C0D4DF;
-
 	font-size: 1em;
 	font-family: Consolas, "Courier New", monospace;
 	text-align: left;
@@ -76,7 +75,7 @@ div.kint-source {
 
 .kint {
 	padding: 0;
-	margin: 10px 0;
+	margin: 10px;
 	font-family: Consolas, "Courier New", monospace;
 	font-size: 11pt;
 	white-space: nowrap;
@@ -110,11 +109,12 @@ div.kint-source {
 
 .kint dl,
 .kint dd {
-	padding: 0 0 0 15px;
+	padding: 0;
 	margin: 0;
 }
 
 .kint dd {
+	margin-left: 15px;
 	background: none !important;
 	border: none !important;
 	padding: 0;
