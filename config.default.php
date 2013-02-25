@@ -57,7 +57,7 @@ $_kintSettings['devel'] = false;
 unset($_kintSettings);
 
 
-/** @param book whether or not to print result to the debug bar, if active  */
+/** @param bool whether or not to print result to the debug bar, if active  */
 global $kint_use_debug_bar;
 $kint_use_debug_bar = true;
 
